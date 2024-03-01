@@ -1,1 +1,62 @@
-<p>home-page works!</p>
+<div class="container mx-auto px-6 py-16">
+  <h1 class="text-lg py-4">Subject: Finance</h1>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6"
+  >
+    <ng-container *ngFor="let book of books">
+      <div
+        class="relative p-4 border rounded-lg bg-white bg-clip-border text-gray-700 shadow-md flex"
+      >
+        <div
+          class="w-32 shrink-0 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700"
+        >
+          <img
+            src="/assets/img/default-image.png"
+            alt="book cover"
+            class="h-38 w-32 object-cover rounded-xl cursor-pointer"
+            routerLink="/bookDetails"
+          />
+        </div>
+        <div class="p-6 flex-grow">
+          <h4
+            class="mb-2 block font-sans text-lg font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased"
+          >
+            Publish Year : {{ book?.first_publish_year }}
+          </h4>
+          <h6
+            class="mb-2 block font-sans text-md font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased cursor-pointer"
+            routerLink="/bookDetails"
+          >
+            Book Title : {{ book?.title }}
+          </h6>
+          <p
+            class="mb-4 block font-sans text-md font-normal leading-relaxed text-gray-700 antialiased cursor-pointer"
+            routerLink="/authorDetails"
+          >
+            Authors:
+            <span>{{ book.authors.name }}</span>
+          </p>
+          <div class="flex justify-end">
+            <a class="inline-block" href="#">
+              <button
+                class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none cursor-pointer"
+                type="button"
+                routerLink="/bookDetails"
+              >
+                More
+              </button>
+            </a>
+            <a class="inline-block" href="#">
+              <button
+                class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                Wishlist
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
