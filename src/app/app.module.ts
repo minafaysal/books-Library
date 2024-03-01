@@ -8,6 +8,9 @@ import { BookDetailsComponent } from './pages/book-details/book-details.componen
 import { AuthorDetailsComponent } from './pages/author-details/author-details.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     BookDetailsComponent,
     AuthorDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
