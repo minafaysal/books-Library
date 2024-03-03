@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'bookDetails',
+    path: 'book-details/:id',
     component: BookDetailsComponent,
   },
   { path: '**', component: NotFoundComponent },

@@ -3,8 +3,10 @@ export interface BOOK {
   title: string;
   authors: Author[];
   key: string;
-  cover_id: string;
+  cover_id: string | undefined;
   cover_img: string;
+  id: string;
+  edition_count: 'number';
 }
 
 export interface Author {

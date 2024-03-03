@@ -3,7 +3,7 @@
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
   >
-    <ng-container *ngFor="let book of booksWithCovers">
+    <ng-container *ngFor="let book of booksWithCovers; trackBy: trackByBookId">
       <div
         class="relative p-4 border rounded-lg bg-white bg-clip-border text-gray-700 shadow-md flex"
       >
@@ -13,8 +13,9 @@
           <img
             src="{{ book.cover_img }}"
             alt="book cover"
+            loading="lazy"
             class="h-38 w-32 object-cover rounded-xl cursor-pointer"
-            routerLink="/bookDetails"
+            [routerLink]="['/book-details', book.id]"
           />
         </div>
         <div class="p-6 w-4/6">
@@ -26,7 +27,7 @@
           </h4>
           <h6
             class="mb-2 block font-sans text-md font-bold leading-snug tracking-normal text-blue-gray-900 antialiased cursor-pointer"
-            routerLink="/bookDetails"
+            [routerLink]="['/book-details', book.id]"
           >
             Book Title <span class="font-normal"> : {{ book?.title }}</span>
           </h6>
@@ -36,7 +37,7 @@
           >
             Authors:
             <ng-container *ngFor="let author of book.authors; let last = last">
-              <span class="font-normal">{{ author.name }}</span>
+              <span class="font-normal hover:underline">{{ author.name }}</span>
               <span *ngIf="!last">, </span>
             </ng-container>
           </p>
@@ -45,7 +46,7 @@
               <button
                 class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none cursor-pointer"
                 type="button"
-                routerLink="/bookDetails"
+                [routerLink]="['/book-details', book.id]"
               >
                 More
               </button>

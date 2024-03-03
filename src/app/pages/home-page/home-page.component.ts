@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { takeUntil } from 'rxjs';
+import { takeUntil, BehaviorSubject, Observable } from 'rxjs';
 import { ComponentBase } from 'src/app/core/base/common-base';
 import { BOOK } from 'src/app/core/models/common.model';
 import { BookService } from 'src/app/core/services/books-service/book.service';
@@ -25,8 +25,8 @@ export class HomePageComponent extends ComponentBase implements OnInit {
   }
 
   ngOnInit() {
-    this.getBooks();
     this.spinner.show();
+    this.getBooks();
   }
   getBooks() {
     this.bookService
@@ -43,8 +43,12 @@ export class HomePageComponent extends ComponentBase implements OnInit {
               : '/assets/img/no_cover.gif',
           };
         });
-         this.spinner.hide();
+        this.sharedService.setBooks(this.booksWithCovers);
         // this.sharedService.checkStatusSuccessResponse(res.State);
+        this.spinner.hide();
       });
+  }
+  trackByBookId(index: number, book: BOOK): string {
+    return book.id;
   }
 }
