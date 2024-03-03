@@ -12,4 +12,10 @@ export interface BOOK {
 export interface Author {
   key: string;
   name: string;
+  birth_date: string;
+  top_work: string;
+  work_count: number;
+  top_subjects: string[];
+  cover_img: string;
+  cover_id:string;
 }

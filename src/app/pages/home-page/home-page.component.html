@@ -33,11 +33,10 @@
           </h6>
           <p
             class="mb-4 block font-sans text-md font-semibold leading-relaxed text-gray-700 antialiased cursor-pointer"
-            routerLink="/authorDetails"
           >
             Authors:
             <ng-container *ngFor="let author of book.authors; let last = last">
-              <span class="font-normal hover:underline">{{ author.name }}</span>
+              <span  [routerLink]="['/author-details', author.key, author.name]" class="font-normal hover:underline">{{ author.name }}</span>
               <span *ngIf="!last">, </span>
             </ng-container>
           </p>

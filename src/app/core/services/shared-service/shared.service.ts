@@ -14,7 +14,6 @@ export class SharedService {
 
   constructor(
     private readonly toastr: ToastrService,
-    private readonly spineer: NgxSpinnerService
   ) {}
 
   setBooks(books: BOOK[]) {
@@ -25,13 +24,22 @@ export class SharedService {
     return this.booksSource.value.find((book) => book.id === id);
   }
 
-  checkStatusSuccessResponse(status: number): void {
-    this.spineer.hide();
-
-    if (status !== 200) {
-      this.toastr.error('We can not get Data Right Now !');
+  handleApiError(
+    error: any,
+    defaultMessage: string = 'An error occurred. Please try again later.'
+  ) {
+    let errorMessage = defaultMessage;
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
     } else {
-      return;
+      if (error.status === 0) {
+        errorMessage =
+          'Could not connect to server. Please check your internet connection.';
+      } else {
+        errorMessage = error.message || defaultMessage;
+      }
     }
+
+    this.toastr.error(errorMessage, 'Error');
   }
 }
