@@ -35,6 +35,9 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         localStorage.setItem('bookDetails', JSON.stringify(this.book));
       }
       this.spinner.hide();
+    }, error => {
+      this.sharedService.handleApiError(error); 
+      this.spinner.hide();
     });
   }
 
