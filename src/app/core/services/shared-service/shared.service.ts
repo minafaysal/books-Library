@@ -1,24 +1,37 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { BOOK } from '../../models/common.model';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
+  private booksSource = new BehaviorSubject<BOOK[]>([]);
+  books$ = this.booksSource.asObservable();
+
   constructor(
     private readonly toastr: ToastrService,
     private readonly spineer: NgxSpinnerService
   ) {}
 
+  setBooks(books: BOOK[]) {
+    this.booksSource.next(books);
+  }
+
+  getBookById(id: string): BOOK | undefined {
+    return this.booksSource.value.find((book) => book.id === id);
+  }
+
   checkStatusSuccessResponse(status: number): void {
     this.spineer.hide();
 
     if (status !== 200) {
-      this.toastr.error("We can not get Data Right Now !");
+      this.toastr.error('We can not get Data Right Now !');
     } else {
-      return
+      return;
     }
-
   }
 }

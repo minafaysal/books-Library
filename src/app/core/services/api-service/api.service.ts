@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/app/environments/environments';
 
 @Injectable({
@@ -8,9 +8,9 @@ import { environment } from 'src/app/environments/environments';
 })
 export class ApiService {
   constructor(private readonly http: HttpClient) {}
-
-  public get<TResponse>(type: string): Observable<TResponse> {
-    return this.http.get<TResponse>(environment.BASE_URL + type
-    );
+  public get<TResponse>(type: string, params?: any): Observable<TResponse> {
+    return this.http.get<TResponse>(environment.BASE_URL + type, {
+      params: { ...params },
+    });
   }
 }
