@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BOOK } from '../../models/common.model';
-
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +9,12 @@ import { BOOK } from '../../models/common.model';
 export class SharedService {
   private booksSource = new BehaviorSubject<BOOK[]>([]);
   books$ = this.booksSource.asObservable();
+  private wishlistSubject = new BehaviorSubject<BOOK[]>([]);
+  wishlist$ = this.wishlistSubject.asObservable();
 
   constructor(
     private readonly toastr: ToastrService,
+    private toastrService: ToastrService
   ) {}
 
   setBooks(books: BOOK[]) {
@@ -40,6 +41,23 @@ export class SharedService {
       }
     }
 
-    this.toastr.error(errorMessage, 'Error');
+    this.toastrService.error(errorMessage, 'Error');
+  }
+  addToWishlist(book: BOOK) {
+    const wishlistBooks = this.wishlistSubject.value;
+    wishlistBooks.push(book);
+    this.wishlistSubject.next(wishlistBooks);
+  }
+  removeFromWishlist(bookId: string): void {
+    const currentWishlist = this.wishlistSubject.value;
+    const updatedWishlist = currentWishlist.filter(
+      (book) => book.id !== bookId
+    );
+    this.wishlistSubject.next(updatedWishlist);
+  }
+
+  isBookInWishlist(bookId: string): boolean {
+    const currentWishlist = this.wishlistSubject.value;
+    return currentWishlist.some((book) => book.id === bookId);
   }
 }

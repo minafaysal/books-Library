@@ -1,5 +1,19 @@
 <div class="container mx-auto px-6 py-16">
-  <h1 class="text-lg py-4 font-bold">Subject: Finance</h1>
+  <h1 class="text-lg py-4 font-bold">My Wish List</h1>
+  <div
+    *ngIf="booksWithCovers.length === 0"
+    class="flex flex-col items-center justify-center h-80"
+  >
+    <p class="text-xl text-gray-500 mb-4">Your wish list is empty.</p>
+    <a class="btn btn-primary mb-8">Go to Home to Choose Your Wish List</a>
+    <button
+      routerLink=""
+      class="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50"
+    >
+      Take me there!
+    </button>
+  </div>
+
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
   >
@@ -47,20 +61,11 @@
           <div class="flex justify-end">
             <a class="inline-block">
               <button
-                class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none cursor-pointer"
-                type="button"
-                [routerLink]="['/book-details', book.id]"
-              >
-                More
-              </button>
-            </a>
-            <a class="inline-block">
-              <button
                 class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
-                routerLink="/wishlist"
+                (click)="removeFromWishlist(book.id)"
               >
-                Go to Wishlist
+                Remove from Wishlist
               </button>
             </a>
           </div>

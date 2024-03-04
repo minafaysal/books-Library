@@ -24,7 +24,7 @@ export class AuthorDetailsComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private sharedService: SharedService,
-    private toastr: ToastrService
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
@@ -76,7 +76,7 @@ export class AuthorDetailsComponent implements OnInit {
           }
         );
       } else {
-        this.toastr.error('Author not found.', 'Error');
+        this.toastrService.error('Author not found.', 'Error');
         this.router.navigate(['**']);
       }
 
