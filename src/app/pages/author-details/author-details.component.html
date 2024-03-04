@@ -7,28 +7,27 @@
     *ngIf="isLoading"
     class="absolute inset-0 flex items-center justify-center"
   >
-    <svg class="animate-spin h-10 w-10 text-gray-500" viewBox="0 0 24 24">
-      <circle
-        class="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        fill="none"
-        stroke-width="4"
-      ></circle>
-      <path
-        class="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2.942 7.943A8 8 0 004.485 20.5l1.415-2.828a5.332 5.332 0 017.778-7.066l1.482-1.482a8 8 0 10-8.218 13.82l-1.002 1.002zM20 12h-4a8.002 8.002 0 00-7.942-7.943L9.5 4.485a8 8 0 1011 11l-1.442-1.442z"
-      ></path>
+     <svg class="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
+        <line x1="128" y1="32" x2="128" y2="64" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line>
+        <line x1="195.9" y1="60.1" x2="173.3" y2="82.7" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="24"></line>
+        <line x1="224" y1="128" x2="192" y2="128" stroke-linecap="round" stroke-linejoin="round" stroke-width="24">
+        </line>
+        <line x1="195.9" y1="195.9" x2="173.3" y2="173.3" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="24"></line>
+        <line x1="128" y1="224" x2="128" y2="192" stroke-linecap="round" stroke-linejoin="round" stroke-width="24">
+        </line>
+        <line x1="60.1" y1="195.9" x2="82.7" y2="173.3" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="24"></line>
+        <line x1="32" y1="128" x2="64" y2="128" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line>
+        <line x1="60.1" y1="60.1" x2="82.7" y2="82.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="24">
+        </line>
     </svg>
   </div>
   <div
     *ngIf="!isLoading"
     class="relative p-4 border rounded-lg bg-white bg-clip-border text-gray-700 shadow-md flex flex-col md:flex-row"
   >
-    <!-- Image element -->
     <img
       *ngIf="!isLoading"
       [src]="author?.cover_img"
