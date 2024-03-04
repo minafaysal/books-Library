@@ -32,7 +32,7 @@
       *ngIf="!isLoading"
       [src]="author?.cover_img"
       alt="author image"
-      class="h-full w-full max-w-72 md:object-cover rounded-xl cursor-pointer"
+      class="h-full w-full max-w-72 md:object-cover rounded-xl "
       (load)="onImageLoad()"
     />
     <div class="p-6 md:w-4/6" *ngIf="!isLoading">
@@ -44,14 +44,14 @@
         <span class="font-semibold">{{ author?.birth_date }}</span>
       </h4>
       <h4
-        class="mb-2 block font-sans text-md font-bold leading-snug tracking-normal text-blue-gray-900 antialiased cursor-pointer"
+        class="mb-2 block font-sans text-md font-bold leading-snug tracking-normal text-blue-gray-900 antialiased "
       >
         . Top Work of Author :<span class="font-semibold">
           {{ author?.top_work }}</span
         >
       </h4>
       <h4
-        class="mb-10 block font-sans text-md font-bold leading-snug tracking-normal text-blue-gray-900 antialiased cursor-pointer"
+        class="mb-10 block font-sans text-md font-bold leading-snug tracking-normal text-blue-gray-900 antialiased "
       >
         . Work Count :<span class="font-semibold">
           {{ author?.work_count }}</span
@@ -59,7 +59,7 @@
       </h4>
 
       <h4
-        class="mb-4 block font-sans text-md font-bold leading-relaxed text-gray-700 antialiased cursor-pointer"
+        class="mb-4 block font-sans text-md font-bold leading-relaxed text-gray-700 antialiased "
       >
         . Top Subject of Author :
         <div class="flex flex-wrap mt-4">

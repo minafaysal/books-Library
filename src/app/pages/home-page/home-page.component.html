@@ -36,7 +36,11 @@
           >
             Authors:
             <ng-container *ngFor="let author of book.authors; let last = last">
-              <span  [routerLink]="['/author-details', author.key, author.name]" class="font-normal hover:underline">{{ author.name }}</span>
+              <span
+                [routerLink]="['/author-details', author.key, author.name]"
+                class="font-normal hover:underline"
+                >{{ author.name }}</span
+              >
               <span *ngIf="!last">, </span>
             </ng-container>
           </p>
@@ -54,8 +58,9 @@
               <button
                 class="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
+                routerLink="/wishlist"
               >
-                Wishlist
+                Go to Wishlist
               </button>
             </a>
           </div>

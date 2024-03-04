@@ -13,6 +13,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages/pages-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { PagesRoutingModule } from './pages/pages-routing.module';
     PagesRoutingModule,
     HttpClientJsonpModule,
     ToastrModule.forRoot(),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

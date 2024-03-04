@@ -7,6 +7,7 @@ export interface BOOK {
   cover_img: string;
   id: string;
   edition_count: 'number';
+  isAddedToWishlist?:boolean;
 }
 
 export interface Author {
